@@ -8,7 +8,7 @@ void solve(){
     ll cnt=2,cst=0;
     vector<int>ans;
     int n=s.size();
-    vector<pair<int,int>>v;
+    vector<pair<int,int>> v;
     for(int i=1;i<n-1;i++){
         if(s[i]>=s[0] and s[i]<=s[n-1] or s[i]<=s[0] and s[i]>=s[n-1]){
             pair<int,int> p={s[i]-'a'+1,i+1};
