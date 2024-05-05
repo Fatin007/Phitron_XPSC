@@ -10,14 +10,8 @@ void solve(){
         if(x=='0') z++;
         else o++;
     }
-    if(z==0 || o==0){
-        cout<<"Ramos"<<endl;
-        return;
-    }
-    if(o==z){
-        if(o%2==0) cout<<"Ramos"<<endl;
-        else cout<<""<<endl;
-    }
+    if(min(o,z)&1) cout<<"Zlatan"<<endl;
+    else cout<<"Ramos"<<endl;
 }
 
 int main(){
