@@ -3,27 +3,22 @@
 #define endl "\n"
 using namespace std;
 
-ll Predicate(){
-    
-}
-
 void solve(){
     ll n,q,sum=0; cin>>n>>q;
-    vector<ll>v(n);
+    vector<ll>v(n),mx(n);
     for(int i=0;i<n;i++){
-        cin>>v[i];
-        sum+=v[i];
+        ll x; cin>>x;
+        if(!i) mx[i]=x;
+        else mx[i]=max(mx[i-1],x);
+        sum+=x;
+        v[i]=sum;
     }
-    // sort(v.begin(),v.end());
     while(q--){
         ll x; cin>>x;
-        // auto it=upper_bound(v.begin(),v.end(),x);
-        // cout<<accumulate(v.begin(),it,0ll)<<" ";
-        ll l=0, r=sum;
-        while(r-l>1){
-            ll m=(l+r)/2;
-
-        }
+        auto it=upper_bound(mx.begin(),mx.end(),x);
+        int pos=it-mx.begin()-1;
+        if(pos>=0) cout<<v[pos]<<" ";
+        else cout<<0<<" ";        
     }
     cout<<endl;
 }
