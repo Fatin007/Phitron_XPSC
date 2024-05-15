@@ -4,22 +4,30 @@
 using namespace std;
 
 void solve(){
-    int n,pos=-1; cin>>n;
-    vector<int>a(n);
+    int n; cin>>n;
+    vector<int>a(n),v;
+    for(auto &x:a) cin>>x;
     bool flg=true;
-    cin>>a[0];
-    for(int i=1;i<n;i++){
-        cin>>a[i];
-        if(flg and a[i]<a[i-1]){
-            flg=false;
-            pos=i;
-        }
-    }
+    v.push_back(a[0]);
     cout<<1;
     for(int i=1;i<n;i++){
-        if(i<pos) cout<<1;
+        if(flg){
+            if(a[i]>=v.back()){
+                v.push_back(a[i]);
+                cout<<1;
+            }
+            else if(a[i]<=v[0]){
+                v.push_back(a[i]);
+                flg=false;
+                cout<<1;
+            }
+            else cout<<0;
+        }
         else{
-            if(a[i]<=a[0]) cout<<1;
+            if(a[i]>=v.back() and a[i]<=v[0]){
+                v.push_back(a[i]);
+                cout<<1;
+            }
             else cout<<0;
         }
     }
