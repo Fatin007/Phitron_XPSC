@@ -14,10 +14,10 @@ void solve(){
     for(int i=0;i<=n;i++){
         if(!fr[i]) a.push_back(i);
     }
-    for(int i=0;i<=n;i++){
-        a.push_back(a[i]);
-    }
-    for(auto i:a) cout<<i<<" "; cout<<endl;
+    int pos=k%(n+1);
+    rotate(a.begin(),a.begin()+n-pos,a.end());
+    for(int i=1;i<=n;i++) cout<<a[i]<<" ";
+    cout<<endl;
 }
 
 int main(){
