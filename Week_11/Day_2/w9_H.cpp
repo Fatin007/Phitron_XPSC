@@ -10,25 +10,24 @@ void solve(){
     for(auto i:s) mp[i]++;
     ll e=0,o=0;
     for(auto [x,y]:mp){
-        if(y){
-            if(y&1) o++;
-            else e++;
-        }
-    }
-    if(n&1 and o>1 or !(n&1) and o){
-       cout<<"NO SOLUTION"<<endl;
-       return;
+        if(y) y&1?o++:e++;
     }
     string ans="";
-    char odd;
-    for(auto [x,y]:mp){
-        if(y&1) odd=x;
-        for(int i=0;i<y/2;i++) ans+=x;
+    if(n&1 and o==1 or !(n&1) and !o){
+        char odd;
+        for(auto [x,y]:mp){
+            if(y&1){odd=x;continue;}
+            for(int i=0;i<y/2;i++) ans+=x;
+        }
+        cout<<ans;
+        for(int i=0;i<mp[odd];i++) cout<<odd;
+        reverse(ans.begin(),ans.end());
+        cout<<ans;
     }
-    int l=ans.size();
-    for(int i=0;i<mp[odd];i++) ans+=odd;
-    for(int i=l-1;i>=0;i--) ans+=ans[i];
-    cout<<ans<<endl;
+    else{
+        cout<<"NO SOLUTION"<<endl;
+        return;
+    }
 }
 
 int main(){
